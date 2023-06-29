@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBell, faInfoCircle, faClose, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '@services/auth.service';
+import { TokenService } from '@services/token.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
 })
-export class NavbarComponent {
+export class NavbarComponent{
   faBell = faBell;
   faInfoCircle = faInfoCircle;
   faClose = faClose;
@@ -16,9 +17,12 @@ export class NavbarComponent {
   isOpenOverlayAvatar = false;
   isOpenOverlayBoards = false;
 
+  user$ = this.authService.user$;
+
   constructor(
     private authService: AuthService,
     private router: Router,
+    private tokenService: TokenService,
   ) {}
 
   logout() {
@@ -26,4 +30,7 @@ export class NavbarComponent {
     this.router.navigate(['/login'])
   }
 
+  isValidToken() {
+    console.log(this.tokenService.isValidToken());
+  }
 }
