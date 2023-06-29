@@ -4,7 +4,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@services/auth.service';
 import { RequestStatus } from '@models/request-status.model';
 
-
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html'
@@ -19,7 +18,7 @@ export class ForgotPasswordFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthService
   ) { }
 
   sendLink() {
@@ -34,8 +33,8 @@ export class ForgotPasswordFormComponent {
         },
         error: () => {
           this.status = 'failed';
-        },
-      })
+        }
+      });
     } else {
       this.form.markAllAsTouched();
     }

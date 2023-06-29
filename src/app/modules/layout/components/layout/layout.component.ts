@@ -5,13 +5,15 @@ import { AuthService } from '@services/auth.service';
   selector: 'app-layout',
   templateUrl: './layout.component.html',
 })
-export class LayoutComponent implements OnInit{
+export class LayoutComponent implements OnInit {
   constructor(
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.authService.getProfile()
-    .subscribe();
+    .subscribe(() => {
+      console.log('get profile');
+    });
   }
 }

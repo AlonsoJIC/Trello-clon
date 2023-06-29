@@ -8,6 +8,7 @@
           placeholder="Enter email"
           type="email"
           name="email"
+          autocomplete="off"
           class="w-full rounded bg-gray-100 border-gray-300 border-2"
         />
       </div>
@@ -26,13 +27,14 @@
         </p>
       </div>
     </div>
+
     <div>
       <app-btn typeBtn="submit" color="success" [loading]="statusUser === 'loading'"
-        >Continue</app-btn>
+        >Continue</app-btn
+      >
     </div>
   </form>
 </div>
-
 
 <div *ngIf="showRegister">
   <h1 class="text-center font-bold py-2 text-gray-700">Enter your data</h1>
@@ -64,6 +66,7 @@
           placeholder="Enter email"
           type="email"
           name="email"
+          autocomplete="off"
           class="w-full rounded bg-gray-100 border-gray-300 border-2"
         />
       </div>
@@ -140,7 +143,7 @@
           *ngIf="form.controls.confirmPassword.hasError('minlength')"
           class="font-medium text-red-500 text-xs mt-1 ml-1"
         >
-          This field should be greater than 8 characters
+          This field should be greater than 6 characters
         </p>
       </div>
     </div>
@@ -158,5 +161,5 @@
       >
     </div>
   </form>
-</div>
 
+</div>

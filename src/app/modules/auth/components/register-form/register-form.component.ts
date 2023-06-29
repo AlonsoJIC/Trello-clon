@@ -17,8 +17,6 @@ export class RegisterFormComponent {
     email: ['', [Validators.email, Validators.required]],
   });
 
-
-
   form = this.formBuilder.nonNullable.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.email, Validators.required]],
@@ -38,7 +36,6 @@ export class RegisterFormComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService
-
   ) {}
 
   register() {
@@ -49,10 +46,11 @@ export class RegisterFormComponent {
       .subscribe({
         next: () => {
           this.status = 'success';
-          this.router.navigate(['/app/boards'])
+          this.router.navigate(['/app/boards']);
         },
-        error: () => {
+        error: (error) => {
           this.status = 'failed';
+          console.log(error);
         }
       })
     } else {
@@ -72,15 +70,14 @@ export class RegisterFormComponent {
             this.showRegister = true;
             this.form.controls.email.setValue(email);
           } else {
-          this.router.navigate(['/login'], {
-            queryParams: { email }
-          })
+            this.router.navigate(['/login'], {
+              queryParams: { email }
+            });
           }
-
         },
-        error: () => {
+        error: (error) => {
           this.statusUser = 'failed';
-
+          console.log(error);
         }
       })
     } else {

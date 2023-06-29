@@ -52,13 +52,13 @@ export class RecoveryFormComponent {
       this.authService.changePassword(this.token, newPassword)
       .subscribe({
         next: () => {
-          this.status = 'success'
+          this.status = 'success';
           this.router.navigate(['/login']);
         },
         error: () => {
-          this.status = 'failed'
-        },
-      })
+          this.status = 'failed';
+        }
+      });
     } else {
       this.form.markAllAsTouched();
     }

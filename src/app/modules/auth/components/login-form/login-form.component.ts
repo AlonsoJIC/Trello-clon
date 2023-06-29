@@ -26,12 +26,12 @@ export class LoginFormComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {
     this.route.queryParamMap.subscribe(params => {
-      const email = params.get('email')
+      const email = params.get('email');
       if (email) {
-        this.form.controls.email.setValue(email)
+        this.form.controls.email.setValue(email);
       }
     })
   }
@@ -43,11 +43,11 @@ export class LoginFormComponent {
       this.authService.login(email, password)
       .subscribe({
         next: () => {
-          this.status = 'success'
-          this.router.navigate(['/app'])
+          this.status = 'success';
+          this.router.navigate(['/app']);
         },
         error: () => {
-          this.status = 'failed'
+          this.status = 'failed';
         }
       });
     } else {
